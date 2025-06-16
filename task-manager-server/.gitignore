@@ -1,0 +1,14 @@
+# node_modules – chứa thư viện cài bằng npm, không cần push
+node_modules/
+
+# .env – chứa biến môi trường (API key, mật khẩu, v.v.)
+.env
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log* 
+
+# Nếu có file lock khác
+package-lock.json
+yarn.lock
