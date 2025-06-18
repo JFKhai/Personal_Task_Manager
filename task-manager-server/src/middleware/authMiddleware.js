@@ -10,10 +10,13 @@ const protect = async (req, res, next) => {
     req.headers.authorization.startsWith("Bearer")
   ) {
     try {
+      // Lấy token từ header Authorization
       token = req.headers.authorization.split(" ")[1];
 
+      // Giải mã token và lấy thông tin người dùng
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
+      // Kiểm tra người dùng trong cơ sở dữ liệu
       req.user = await User.findById(decoded.id).select("-password");
 
       next();
