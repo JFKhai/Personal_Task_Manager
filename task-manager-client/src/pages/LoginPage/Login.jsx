@@ -1,5 +1,3 @@
-import React from 'react';
-import './Login.css'; // Assuming you have some styles for the Login page
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup'; // Library for data validation
 import * as yup from 'yup';

@@ -1,8 +1,5 @@
-import React from 'react';
-import './Register.css'; // Assuming you have some styles for the Register page
-import Link from 'react-router-dom/Link';
 
-import { useForm } from 'react-router-dom';
+import { useForm } from 'react-hook-form'; // Thư viện react-hook-form để quản lý form
 import { yupResolver } from '@hookform/resolvers/yup'; // Thư viên yup để xác thực dữ liệu
 import * as yup from "yup";
 import axios from "axios"; // 
