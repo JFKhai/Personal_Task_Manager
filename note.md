@@ -39,3 +39,17 @@
  - Implement authentication context
  - Protected routes cho authenticated users
  - Token storage và auto-logout
+
+## Phase 2: Core CRUD Features (3-4 ngày)
+### Backend:
+ - Tạo Task model với relationship tới User
+ - CRUD API endpoints cho tasks
+ - Filtering và sorting tasks by status
+ - Input validation và error handling
+
+### Frontend:
+ - Dashboard hiển thị danh sách tasks
+ - Form thêm/sửa task với date picker
+ - Task item component với actions (edit, delete, toggle)
+ - Modal/popup cho task details
+ - Loading states và error handling

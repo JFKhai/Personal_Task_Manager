@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 // Tạo schema xác thực với yup
 const schema = yup.object().shape({
-  name: yup.string().required("Vui lòng nhập tên"),
+  username: yup.string().required("Vui lòng nhập tên"),
   email: yup.string().email("Email không hợp lệ").required("Vui lòng nhập email"),
   password: yup.string().min(6, "Ít nhất 6 ký tự").required("Vui lòng nhập mật khẩu")
 });
@@ -33,8 +33,8 @@ function Register() {
     <div className="max-w-md mx-auto mt-20">
       <h2 className="text-2xl font-bold mb-6">Register</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <input className="w-full p-2 border" placeholder="Name" {...register("name")} />
-        <p className="text-red-500 text-sm">{errors.name?.message}</p>
+        <input className="w-full p-2 border" placeholder="Username" {...register("username")} />
+        <p className="text-red-500 text-sm">{errors.username?.message}</p>
 
         <input className="w-full p-2 border" placeholder="Email" {...register("email")} />
         <p className="text-red-500 text-sm">{errors.email?.message}</p>

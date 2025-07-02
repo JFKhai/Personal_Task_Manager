@@ -3,6 +3,7 @@ const cors = require("cors"); // Để cho phép frontend truy cập API
 const morgan = require("morgan"); // Để ghi log HTTP requests (tuỳ chọn)
 const authRoutes = require("./src/routes/authRoutes"); // Import các route liên quan đến xác thực
 const protectedRoutes = require("./src/routes/protectRoutes"); // Import các route được bảo vệ
+const taskRoutes = require("./src/routes/taskRoutes"); // Import các route liên quan đến Task
 
 const testRoutes = require("./src/routes/testRoutes"); // Import test routes
 
@@ -22,6 +23,7 @@ app.get("/health", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/test", testRoutes);
 app.use("/api/protected", protectedRoutes);
+app.use("/api/tasks", taskRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

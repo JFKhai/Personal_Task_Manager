@@ -16,7 +16,7 @@ const registerUser = async (req, res) => {
     // Kiểm tra xem email đã tồn tại chưa
     const userExists = await User.findOne({ email });
     if (userExists) {
-      throw new Error("Email đã tồn tại. Vui lòng chọn email khác.");
+      return res.status(400).json({ message: "Email đã được sử dụng" });
     }
 
     // Tạo người dùng mới
@@ -35,7 +35,7 @@ const registerUser = async (req, res) => {
       token,
     });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    console.error("Lỗi đăng ký:", error.message);
     res.status(500).json({ message: "Đăng ký thất bại", error: error.message });
   }
 };

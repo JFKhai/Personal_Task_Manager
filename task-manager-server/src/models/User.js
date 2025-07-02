@@ -1,8 +1,8 @@
-const monggoose = require("mongoose");
+const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs"); // Đây là thư viện để mã hóa mật khẩu
 
 // Tạo một schema cho người dùng
-const userSchema = new monggoose.Schema(
+const userSchema = new mongoose.Schema(
   {
     username: {
       type: String,
@@ -44,4 +44,4 @@ userSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password); // So sánh mật khẩu đã mã hóa với mật khẩu người dùng nhập vào
 };
 
-module.exports = monggoose.model("User", userSchema); // Xuất mô hình người dùng để sử dụng trong các phần khác của ứng dụng
+module.exports = mongoose.model("User", userSchema); // Xuất mô hình người dùng để sử dụng trong các phần khác của ứng dụng
