@@ -94,9 +94,9 @@ function TaskItem({ task, onChange }) {
               className={`text-sm font-medium text-white ${
                 task.status === "completed"
                   ? "line-through text-gray-400"
-                  : task.status === "in_progress"
-                  ? "text-blue-500"
-                  : "text-yellow-600"
+                  : task.status === "overdue"
+                  ? "text-blue-500" // overdue
+                  : "text-yellow-600" // pending
               }`}>
               {task.title}
             </span>
