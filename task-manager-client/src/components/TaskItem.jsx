@@ -91,11 +91,11 @@ function TaskItem({ task, onChange }) {
         <div className="flex justify-between items-start">
           <div className="flex items-center gap-2">
             <span
-              className={`text-sm font-medium text-white ${
+              className={`text-sm font-medium ${
                 task.status === "completed"
                   ? "line-through text-gray-400"
                   : task.status === "overdue"
-                  ? "text-blue-500" // overdue
+                  ? "text-red-500" // overdue
                   : "text-yellow-600" // pending
               }`}>
               {task.title}
@@ -135,10 +135,10 @@ function TaskItem({ task, onChange }) {
               onClick={async () => {
                 const nextStatus =
                   task.status === "pending"
-                    ? "in_progress"
-                    : task.status === "in_progress"
-                    ? "completed"
-                    : "pending";
+                    ? "overdue"
+                    : task.status === "completed"
+                    ? "pending"
+                    : "completed";
 
                 try {
                   await axios.put(

@@ -44,17 +44,27 @@ const getTasks = asyncHandler(async (req, res) => {
       .json({ message: "Bạn cần đăng nhập để xem công việc" });
   }
 
-  try {
-    // Get all tasks of the user
-    const tasks = await Task.find({ userId: req.user._id }).sort({
-      createdAt: -1,
-    });
-    res.status(200).json(tasks);
-  } catch (error) {
-    res
-      .status(400)
-      .json({ message: "Lấy công việc thất bại", error: error.message });
-  }
+  let tasks = await Task.find({ userId: req.user._id });
+
+  const now = new Date();
+
+  const updatePromises = tasks.map(async (task) => {
+    if (
+      task.dueDate &&
+      new Date(task.dueDate) < now &&
+      task.status !== "completed"
+    ) {
+      task.status = "overdue"; // Update status to overdue if due date has passed
+      return task.save(); // Save the updated task
+    }
+    return task; // Return the task without changes
+  });
+
+  tasks = await Promise.all(updatePromises);
+
+  res
+    .status(200)
+    .json(tasks.sort((a, b) => new Date(b.dueDate) - new Date(a.dueDate)));
 });
 
 // [GET] /api/tasks/:id

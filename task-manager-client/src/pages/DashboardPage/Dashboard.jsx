@@ -50,7 +50,7 @@ function Dashboard() {
           className="bg-black p-2 border">
           <option value="all">Tất cả trạng thái</option>
           <option value="pending">Đang chờ</option>
-          <option value="in_progress">Đang làm</option>
+          <option value="overdue">Quá hạn</option>
           <option value="completed">Hoàn thành</option>
         </select>
 

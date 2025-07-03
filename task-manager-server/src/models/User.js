@@ -24,6 +24,14 @@ const userSchema = new mongoose.Schema(
       required: [true, "Vui lòng nhập mật khẩu"],
       minlength: [6, "Mật khẩu phải có ít nhất 6 ký tự"], // Đặt độ dài tối thiểu cho mật khẩu
     },
+    createdAt: {
+      type: Date,
+      default: Date.now, // Tự động gán thời gian tạo
+    },
+    updatedAt: {
+      type: Date,
+      default: Date.now, // Tự động gán thời gian cập nhật
+    },
   },
   {
     timeseries: true, // Thêm trường thời gian để theo dõi thời gian tạo và cập nhật
