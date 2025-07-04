@@ -7,6 +7,7 @@ const {
   getTaskById,
   updateTask,
   deleteTask,
+  getTaskStats,
 } = require("../controllers/taskController");
 
 const router = express.Router();
@@ -21,6 +22,8 @@ router
   .route("/")
   .get(protect, getTasks) // Get all tasks
   .post(protect, createTask); // Create a new task
+
+router.get("/stats", protect, getTaskStats); // Get task statistics
 
 router
   .route("/:id")

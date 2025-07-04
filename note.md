@@ -78,4 +78,11 @@
 - Filter tasks by status (tabs hoặc sidebar)
 - Task statistics dashboard
 - Search functionality
-- Bulk actions (mark multiple as complete)
+
+## Phase 4: UI/UX Enhancement (2-3 ngày)
+
+- Responsive design cho mobile/tablet
+- Dark/Light mode toggle
+- Smooth animations và transitions
+- Toast notifications cho user actions
+- Empty states và loading skeletons

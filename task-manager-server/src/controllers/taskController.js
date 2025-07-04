@@ -148,10 +148,45 @@ const deleteTask = asyncHandler(async (req, res) => {
       .json({ message: "Xóa công việc thất bại", error: error.message });
   }
 });
+
+// [GET] /api/tasks/stats
+const getTaskStats = asyncHandler(async (req, res) => {
+  const userId = req.user._id;
+
+  // Check if user is logged in
+  if (!userId) {
+    return res
+      .status(401)
+      .json({ message: "Bạn cần đăng nhập để xem thống kê công việc" });
+  }
+
+  const total = await Task.countDocuments({ userId });
+  const completed = await Task.countDocuments({
+    userId,
+    status: "completed",
+  });
+  const overdue = await Task.countDocuments({
+    userId,
+    status: "overdue",
+  });
+  const pending = await Task.countDocuments({
+    userId,
+    status: "pending",
+  });
+
+  res.status(200).json({
+    total,
+    completed,
+    overdue,
+    pending,
+  });
+});
+
 module.exports = {
   createTask,
   getTasks,
   getTaskById,
+  getTaskStats,
   updateTask,
   deleteTask,
 };
